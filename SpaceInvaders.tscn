@@ -1,0 +1,2353 @@
+[gd_scene load_steps=27 format=3 uid="uid://b8o8vvmox25kq"]
+
+[ext_resource type="Script" path="res://start_paused.gd" id="1_6fk3t"]
+[ext_resource type="Script" path="res://enemies_movement.gd" id="2_t5aff"]
+[ext_resource type="Script" path="res://enemy_life.gd" id="3_kt1pp"]
+[ext_resource type="Texture2D" uid="uid://cvgnqtkye6m58" path="res://spaceinvaders-sprites/alien3_A.png" id="4_oiiic"]
+[ext_resource type="Texture2D" uid="uid://v5fhty36n3up" path="res://spaceinvaders-sprites/alien1_A.png" id="5_3xk0d"]
+[ext_resource type="Texture2D" uid="uid://crwob2e26kea0" path="res://spaceinvaders-sprites/alien2_A.png" id="6_xamrt"]
+[ext_resource type="Script" path="res://bunkers.gd" id="7_0ckn4"]
+[ext_resource type="Texture2D" uid="uid://b6rp5tg65vej5" path="res://spaceinvaders-sprites/player.png" id="8_k0j88"]
+[ext_resource type="Script" path="res://lifeCounter1.gd" id="9_bd5fw"]
+[ext_resource type="Script" path="res://lifeCounter2.gd" id="10_7h3ox"]
+[ext_resource type="Script" path="res://menu.gd" id="11_auxfl"]
+[ext_resource type="Script" path="res://quit_game.gd" id="12_a34cl"]
+[ext_resource type="Script" path="res://continue_game.gd" id="13_kts0r"]
+[ext_resource type="Script" path="res://new_game.gd" id="14_jfi3l"]
+[ext_resource type="Script" path="res://movement.gd" id="15_6jtd0"]
+[ext_resource type="Script" path="res://projectile.gd" id="16_pambs"]
+[ext_resource type="Script" path="res://ufo.gd" id="17_6lwok"]
+[ext_resource type="Texture2D" uid="uid://4qrrqnllayky" path="res://spaceinvaders-sprites/ufo.png" id="18_1ujpr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ki8k3"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e77qr"]
+size = Vector2(11, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1nwq"]
+size = Vector2(12, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_274hu"]
+size = Vector2(2, 8)
+
+[sub_resource type="SystemFont" id="SystemFont_i0ut7"]
+font_names = PackedStringArray("Rubik")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uj2ov"]
+size = Vector2(13, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bje6"]
+size = Vector2(1, 4.00001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eba5k"]
+size = Vector2(16, 7)
+
+[node name="Node2D" type="Node2D"]
+top_level = true
+scale = Vector2(3, 3)
+script = ExtResource("1_6fk3t")
+
+[node name="Enemies" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(24, 32)
+script = ExtResource("2_t5aff")
+
+[node name="Alien" type="StaticBody2D" parent="Enemies"]
+position = Vector2(2, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien2" type="StaticBody2D" parent="Enemies"]
+position = Vector2(18, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien2"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien2"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien3" type="StaticBody2D" parent="Enemies"]
+position = Vector2(34, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien3"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien3"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien4" type="StaticBody2D" parent="Enemies"]
+position = Vector2(50, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien4"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien4"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien5" type="StaticBody2D" parent="Enemies"]
+position = Vector2(66, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien5"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien5"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien6" type="StaticBody2D" parent="Enemies"]
+position = Vector2(82, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien6"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien6"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien7" type="StaticBody2D" parent="Enemies"]
+position = Vector2(98, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien7"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien7"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien8" type="StaticBody2D" parent="Enemies"]
+position = Vector2(114, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien8"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien8"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien9" type="StaticBody2D" parent="Enemies"]
+position = Vector2(130, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien9"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien9"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien10" type="StaticBody2D" parent="Enemies"]
+position = Vector2(146, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien10"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien10"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien11" type="StaticBody2D" parent="Enemies"]
+position = Vector2(162, 0)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien11"]
+texture = ExtResource("4_oiiic")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien11"]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_ki8k3")
+
+[node name="Alien12" type="StaticBody2D" parent="Enemies"]
+position = Vector2(1, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien12"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien12"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien13" type="StaticBody2D" parent="Enemies"]
+position = Vector2(17, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien13"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien13"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien14" type="StaticBody2D" parent="Enemies"]
+position = Vector2(33, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien14"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien14"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien15" type="StaticBody2D" parent="Enemies"]
+position = Vector2(49, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien15"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien15"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien16" type="StaticBody2D" parent="Enemies"]
+position = Vector2(65, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien16"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien16"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien17" type="StaticBody2D" parent="Enemies"]
+position = Vector2(81, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien17"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien17"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien18" type="StaticBody2D" parent="Enemies"]
+position = Vector2(97, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien18"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien18"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien19" type="StaticBody2D" parent="Enemies"]
+position = Vector2(113, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien19"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien19"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien20" type="StaticBody2D" parent="Enemies"]
+position = Vector2(129, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien20"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien20"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien21" type="StaticBody2D" parent="Enemies"]
+position = Vector2(145, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien21"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien21"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien22" type="StaticBody2D" parent="Enemies"]
+position = Vector2(161, 12)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien22"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien22"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien23" type="StaticBody2D" parent="Enemies"]
+position = Vector2(1, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien23"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien23"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien24" type="StaticBody2D" parent="Enemies"]
+position = Vector2(17, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien24"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien24"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien25" type="StaticBody2D" parent="Enemies"]
+position = Vector2(33, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien25"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien25"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien26" type="StaticBody2D" parent="Enemies"]
+position = Vector2(49, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien26"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien26"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien27" type="StaticBody2D" parent="Enemies"]
+position = Vector2(65, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien27"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien27"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien28" type="StaticBody2D" parent="Enemies"]
+position = Vector2(81, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien28"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien28"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien29" type="StaticBody2D" parent="Enemies"]
+position = Vector2(97, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien29"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien29"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien30" type="StaticBody2D" parent="Enemies"]
+position = Vector2(113, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien30"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien30"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien31" type="StaticBody2D" parent="Enemies"]
+position = Vector2(129, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien31"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien31"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien32" type="StaticBody2D" parent="Enemies"]
+position = Vector2(145, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien32"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien32"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien33" type="StaticBody2D" parent="Enemies"]
+position = Vector2(161, 24)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien33"]
+texture = ExtResource("5_3xk0d")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien33"]
+position = Vector2(5.5, 4)
+shape = SubResource("RectangleShape2D_e77qr")
+
+[node name="Alien34" type="StaticBody2D" parent="Enemies"]
+position = Vector2(0, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien34"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien34"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien35" type="StaticBody2D" parent="Enemies"]
+position = Vector2(16, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien35"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien35"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien36" type="StaticBody2D" parent="Enemies"]
+position = Vector2(32, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien36"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien36"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien37" type="StaticBody2D" parent="Enemies"]
+position = Vector2(48, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien37"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien37"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien38" type="StaticBody2D" parent="Enemies"]
+position = Vector2(64, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien38"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien38"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien39" type="StaticBody2D" parent="Enemies"]
+position = Vector2(80, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien39"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien39"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien40" type="StaticBody2D" parent="Enemies"]
+position = Vector2(96, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien40"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien40"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien41" type="StaticBody2D" parent="Enemies"]
+position = Vector2(112, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien41"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien41"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien42" type="StaticBody2D" parent="Enemies"]
+position = Vector2(128, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien42"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien42"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien43" type="StaticBody2D" parent="Enemies"]
+position = Vector2(144, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien43"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien43"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien44" type="StaticBody2D" parent="Enemies"]
+position = Vector2(160, 36)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien44"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien44"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien45" type="StaticBody2D" parent="Enemies"]
+position = Vector2(0, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien45"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien45"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien46" type="StaticBody2D" parent="Enemies"]
+position = Vector2(16, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien46"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien46"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien47" type="StaticBody2D" parent="Enemies"]
+position = Vector2(32, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien47"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien47"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien48" type="StaticBody2D" parent="Enemies"]
+position = Vector2(48, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien48"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien48"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien49" type="StaticBody2D" parent="Enemies"]
+position = Vector2(64, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien49"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien49"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien50" type="StaticBody2D" parent="Enemies"]
+position = Vector2(80, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien50"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien50"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien51" type="StaticBody2D" parent="Enemies"]
+position = Vector2(96, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien51"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien51"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien52" type="StaticBody2D" parent="Enemies"]
+position = Vector2(112, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien52"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien52"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien53" type="StaticBody2D" parent="Enemies"]
+position = Vector2(128, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien53"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien53"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien54" type="StaticBody2D" parent="Enemies"]
+position = Vector2(144, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien54"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien54"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Alien55" type="StaticBody2D" parent="Enemies"]
+position = Vector2(160, 48)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_kt1pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/Alien55"]
+texture = ExtResource("6_xamrt")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Alien55"]
+position = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_a1nwq")
+
+[node name="Explosions" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Bunkers" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_0ckn4")
+
+[node name="Bunker" type="Node2D" parent="Bunkers"]
+position = Vector2(30, 169)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(-7, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(-5, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D2"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect2" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D2"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(-3, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D3"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect3" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D3"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(-1, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D4"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect4" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D4"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(-1, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D5"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect5" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D5"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(-3, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D6"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect6" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D6"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(-5, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D7"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect7" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D7"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(-7, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D8"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect8" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D8"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(1, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D9"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect9" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D9"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(3, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D10"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect10" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D10"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(5, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D11"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D11"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(7, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D12"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D12"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(9, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D13"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D13"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(11, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D14"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D14"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(13, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D15"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D15"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(15, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D16"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D16"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D17" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(17, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D17"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D17"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D18" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(19, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D18"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D18"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D19" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(21, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D19"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D19"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D20" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(23, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D20"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D20"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D21" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(23, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D21"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D21"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D22" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(21, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D22"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D22"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D23" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(19, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D23"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D23"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D24" type="StaticBody2D" parent="Bunkers/Bunker"]
+position = Vector2(17, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker/StaticBody2D24"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker/StaticBody2D24"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="Bunker2" type="Node2D" parent="Bunkers"]
+position = Vector2(79, 169)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(-7, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(-5, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D2"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect2" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D2"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(-3, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D3"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect3" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D3"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(-1, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D4"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect4" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D4"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(-1, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D5"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect5" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D5"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(-3, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D6"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect6" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D6"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(-5, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D7"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect7" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D7"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(-7, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D8"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect8" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D8"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(1, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D9"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect9" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D9"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(3, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D10"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect10" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D10"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(5, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D11"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D11"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(7, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D12"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D12"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(9, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D13"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D13"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(11, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D14"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D14"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(13, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D15"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D15"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(15, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D16"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D16"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D17" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(17, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D17"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D17"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D18" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(19, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D18"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D18"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D19" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(21, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D19"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D19"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D20" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(23, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D20"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D20"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D21" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(23, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D21"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D21"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D22" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(21, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D22"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D22"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D23" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(19, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D23"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D23"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D24" type="StaticBody2D" parent="Bunkers/Bunker2"]
+position = Vector2(17, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker2/StaticBody2D24"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker2/StaticBody2D24"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="Bunker3" type="Node2D" parent="Bunkers"]
+position = Vector2(127, 169)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(-7, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(-5, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D2"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect2" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D2"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(-3, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D3"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect3" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D3"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(-1, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D4"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect4" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D4"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(-1, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D5"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect5" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D5"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(-3, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D6"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect6" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D6"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(-5, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D7"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect7" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D7"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(-7, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D8"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect8" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D8"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(1, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D9"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect9" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D9"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(3, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D10"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect10" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D10"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(5, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D11"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D11"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(7, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D12"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D12"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(9, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D13"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D13"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(11, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D14"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D14"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(13, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D15"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D15"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(15, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D16"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D16"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D17" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(17, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D17"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D17"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D18" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(19, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D18"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D18"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D19" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(21, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D19"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D19"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D20" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(23, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D20"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D20"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D21" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(23, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D21"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D21"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D22" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(21, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D22"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D22"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D23" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(19, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D23"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D23"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D24" type="StaticBody2D" parent="Bunkers/Bunker3"]
+position = Vector2(17, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker3/StaticBody2D24"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker3/StaticBody2D24"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="Bunker4" type="Node2D" parent="Bunkers"]
+position = Vector2(175, 169)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(-7, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(-5, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D2"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect2" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D2"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(-3, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D3"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect3" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D3"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(-1, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D4"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect4" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D4"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(-1, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D5"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect5" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D5"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(-3, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D6"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect6" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D6"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D7" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(-5, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D7"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect7" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D7"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D8" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(-7, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D8"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect8" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D8"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D9" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(1, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D9"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect9" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D9"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(3, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D10"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect10" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D10"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D11" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(5, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D11"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D11"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D12" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(7, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D12"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D12"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D13" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(9, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D13"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D13"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D14" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(11, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D14"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D14"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D15" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(13, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D15"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D15"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D16" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(15, 11)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D16"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D16"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D17" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(17, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D17"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D17"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D18" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(19, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D18"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D18"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D19" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(21, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D19"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D19"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D20" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(23, 15)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D20"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D20"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D21" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(23, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D21"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D21"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D22" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(21, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D22"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D22"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D23" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(19, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D23"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D23"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="StaticBody2D24" type="StaticBody2D" parent="Bunkers/Bunker4"]
+position = Vector2(17, 23)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/Bunker4/StaticBody2D24"]
+position = Vector2(1, 4)
+shape = SubResource("RectangleShape2D_274hu")
+
+[node name="ColorRect11" type="ColorRect" parent="Bunkers/Bunker4/StaticBody2D24"]
+offset_right = 2.0
+offset_bottom = 8.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Bottom" type="Node2D" parent="UI"]
+
+[node name="ColorRect2" type="ColorRect" parent="UI/Bottom"]
+offset_left = -7.0
+offset_top = 236.0
+offset_right = 232.0
+offset_bottom = 277.0
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="ColorRect" type="ColorRect" parent="UI/Bottom"]
+offset_left = -8.0
+offset_top = 236.0
+offset_right = 232.0
+offset_bottom = 237.0
+color = Color(0.258824, 1, 0.517647, 1)
+
+[node name="LifesLabel" type="Label" parent="UI/Bottom"]
+unique_name_in_owner = true
+offset_left = 7.0
+offset_top = 236.0
+offset_right = 17.0
+offset_bottom = 259.0
+theme_override_fonts/font = SubResource("SystemFont_i0ut7")
+text = "3
+"
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Bottom"]
+position = Vector2(31, 242)
+texture = ExtResource("8_k0j88")
+script = ExtResource("9_bd5fw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="UI/Bottom"]
+position = Vector2(47, 242)
+texture = ExtResource("8_k0j88")
+script = ExtResource("10_7h3ox")
+
+[node name="Top" type="Node2D" parent="UI"]
+
+[node name="ColorRect2" type="ColorRect" parent="UI/Top"]
+offset_left = -8.0
+offset_top = -25.0
+offset_right = 231.0
+offset_bottom = 16.0
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="ScoreTextLabel" type="Label" parent="UI/Top"]
+z_index = 2
+offset_left = 56.0
+offset_top = -2.0
+offset_right = 104.0
+offset_bottom = 21.0
+theme_override_fonts/font = SubResource("SystemFont_i0ut7")
+theme_override_font_sizes/font_size = 15
+text = "SCORE
+"
+uppercase = true
+
+[node name="ScoreLabel" type="Label" parent="UI/Top"]
+unique_name_in_owner = true
+z_index = 2
+offset_left = 120.0
+offset_top = -2.0
+offset_right = 159.0
+offset_bottom = 21.0
+theme_override_fonts/font = SubResource("SystemFont_i0ut7")
+theme_override_font_sizes/font_size = 15
+text = "0000
+"
+uppercase = true
+
+[node name="Menu" type="Node2D" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+z_index = 1
+script = ExtResource("11_auxfl")
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+offset_left = -476.0
+offset_top = -343.0
+offset_right = 1036.0
+offset_bottom = 630.0
+color = Color(0.219501, 0.219501, 0.219501, 1)
+
+[node name="Label" type="Label" parent="Menu"]
+offset_left = 27.0
+offset_top = 64.0
+offset_right = 198.0
+offset_bottom = 94.0
+theme_override_font_sizes/font_size = 21
+text = "SPACE INVADERS"
+
+[node name="QuitButton" type="Button" parent="Menu"]
+process_mode = 2
+offset_left = 64.0
+offset_top = 204.0
+offset_right = 160.0
+offset_bottom = 236.0
+text = "QUIT"
+script = ExtResource("12_a34cl")
+
+[node name="ContinueButton" type="Button" parent="Menu"]
+process_mode = 2
+offset_left = 64.0
+offset_top = 168.0
+offset_right = 160.0
+offset_bottom = 200.0
+disabled = true
+text = "CONTINUE"
+script = ExtResource("13_kts0r")
+
+[node name="NewGameButton" type="Button" parent="Menu"]
+process_mode = 2
+offset_left = 64.0
+offset_top = 132.0
+offset_right = 160.0
+offset_bottom = 164.0
+text = "NEW GAME"
+script = ExtResource("14_jfi3l")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(105, 216)
+motion_mode = 1
+script = ExtResource("15_6jtd0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture_filter = 5
+texture = ExtResource("8_k0j88")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(6.5, 4)
+shape = SubResource("RectangleShape2D_uj2ov")
+
+[node name="Laser" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-130, -50)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("16_pambs")
+
+[node name="ColorRect" type="ColorRect" parent="Laser"]
+offset_right = 1.0
+offset_bottom = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Laser"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_4bje6")
+
+[node name="UFO" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-32, 19)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("17_6lwok")
+
+[node name="Sprite2D" type="Sprite2D" parent="UFO"]
+texture = ExtResource("18_1ujpr")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UFO"]
+position = Vector2(8, 3.5)
+shape = SubResource("RectangleShape2D_eba5k")

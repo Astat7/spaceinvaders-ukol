@@ -46,9 +46,9 @@ func _process(_delta: float) -> void:
 	
 	
 	if Input.is_action_pressed("move_right"):
-		veloc.x += 3
+		veloc.x += 1
 	if Input.is_action_pressed("move_left"):
-		veloc.x -= 3
+		veloc.x -= 1
 	
 	# move
 	self.position.x = clamp(self.position.x+veloc.x, 7, 204)

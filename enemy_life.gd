@@ -25,8 +25,9 @@ func destroy() -> void:
 			explosion.queue_free()
 	
 func respawn() -> void:
-	inGame = true
-	enemyCount += 1
+	if inGame == false:
+		inGame = true
+		enemyCount += 1
 	self.position = offSet
 
 # Called when the node enters the scene tree for the first time.
